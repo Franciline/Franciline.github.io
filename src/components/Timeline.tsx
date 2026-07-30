@@ -10,54 +10,55 @@ function Timeline() {
   return (
     <div id="history">
       <div className="items-container">
-        <h1>Career History</h1>
+        <h1>Education</h1>
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
             contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
             contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="2022 - present"
+            date="Jul. 2026 - Present"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Technology Consultant</h3>
-            <h4 className="vertical-timeline-element-subtitle">Dallas, TX</h4>
+            <h3 className="vertical-timeline-element-title">Research Intern NLP</h3>
+            <h4 className="vertical-timeline-element-subtitle">Tsukuba University, Ibaraki, Japan</h4>
             <p>
-              Full-stack Web Development, GenAI/LLM, Project Management, Business Development
+              NLP, LLM, Emotion-Cause extraction from 
+              Breast Cancer Narratives 
             </p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            date="2020 - 2022"
+            date="2025 - 2026"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Full Stack Engineer</h3>
-            <h4 className="vertical-timeline-element-subtitle">Laie, HI</h4>
+            <h3 className="vertical-timeline-element-title">Master 1 MIND/DAC</h3>
+            <h4 className="vertical-timeline-element-subtitle">Sorbonne University, Paris, France</h4>
             <p>
-              Frontend Development, Backend Development, User Experience, Team Leading
+              AI, Machine Learning, Deep Learning, Natural Language Processing..
             </p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            date="2021 - 2021"
+            date="Jul. 2025 - Aug. 2025"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Staff Engineer Intern</h3>
-            <h4 className="vertical-timeline-element-subtitle">Laie, HI</h4>
+            <h3 className="vertical-timeline-element-title">Data Science Intern </h3>
+            <h4 className="vertical-timeline-element-subtitle">LIP6 - SU, Paris, France</h4>
             <p>
-              Full-stack Development, API Development, User Experience
+              Prediction with Machine Learning of companies carbon footprint emission
             </p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            date="2020 - 2020"
+            date="2022 - 2025"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Data Analyst Intern</h3>
-            <h4 className="vertical-timeline-element-subtitle">Tokyo, Japan</h4>
+            <h3 className="vertical-timeline-element-title">Bachelor Computer Science</h3>
+            <h4 className="vertical-timeline-element-subtitle">Sorbonne University, Paris, France</h4>
             <p>
               Automation, Data Governance, Statistical Analysis
             </p>
