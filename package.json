@@ -2,7 +2,7 @@
   "name": "react-portfolio-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yujisatojr.github.io/react-portfolio-template",
+  "homepage": "https://franciline.github.io",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -54,6 +54,18 @@
     ]
   },
   "devDependencies": {
-    "@types/react-vertical-timeline-component": "^3.3.6"
+    "@types/react-vertical-timeline-component": "^3.3.6",
+    "gh-pages": "^6.3.0"
+  },
+  "allowScripts": {
+    "@fortawesome/fontawesome-common-types@6.5.2": true,
+    "@fortawesome/fontawesome-svg-core@6.5.2": true,
+    "@fortawesome/free-brands-svg-icons@6.5.2": true,
+    "@fortawesome/free-regular-svg-icons@6.5.2": true,
+    "@fortawesome/free-solid-svg-icons@6.5.2": true,
+    "core-js@3.37.1": true,
+    "core-js-pure@3.37.1": true,
+    "fsevents@2.3.3": true,
+    "react-vertical-timeline-component@3.6.0": true
   }
 }
