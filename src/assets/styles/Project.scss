@@ -8,26 +8,136 @@
 .projects-container .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
+    gap: 1.5rem;
 }
-  
-.projects-container .projects-grid .project {
+
+.project-card {
+    width: 100%;
+    padding: 1.5rem;
+    border: 0;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
     text-align: left;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+
+    h2,
+    p {
+        color: rgb(39, 40, 34);
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 1.35rem;
+    }
+
+    p {
+        margin: 1rem 0 1.25rem;
+        line-height: 1.55;
+    }
+
+    &:focus-visible {
+        outline: 3px solid #55a7f7;
+        outline-offset: 4px;
+    }
 }
-  
-.project h2:hover {
-    text-decoration: underline;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+
+@media (hover: hover) {
+    .project-card:hover {
+        transform: scale(1.025);
+        box-shadow: 0 9px 24px rgba(0, 0, 0, 0.28);
+    }
 }
-  
-.zoom {
-    border-radius: 5px;
-    transition: transform .2s;
-    margin: 0 auto;
+
+.project-card-header,
+.project-dialog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
 }
-  
-.zoom:hover {
-    transform: scale(1.05);
+
+.project-date {
+    flex: 0 0 auto;
+    color: #52606d;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-card .MuiChip-root {
+    background: rgba(15, 76, 117, 0.12);
+    color: #0f4c75;
+    font-weight: 600;
+}
+
+.project-dialog {
+    position: relative;
+    border-radius: 12px !important;
+
+    .MuiDialogContent-root {
+        padding: 2.5rem;
+    }
+
+    h2 {
+        margin: 0;
+        padding-right: 2rem;
+    }
+
+    h3 {
+        margin-top: 2rem;
+    }
+
+    p {
+        line-height: 1.65;
+    }
+}
+
+.project-dialog-close {
+    position: absolute !important;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+
+.project-dialog--dark {
+    background: #26353d !important;
+
+    h2,
+    h3,
+    p,
+    span,
+    button,
+    svg {
+        color: white;
+    }
+
+    .MuiChip-root {
+        background: rgba(255, 255, 255, 0.12);
+    }
+}
+
+.project-dialog--light {
+    background: white !important;
+
+    h2,
+    h3,
+    p,
+    span,
+    button,
+    svg {
+        color: rgb(39, 40, 34);
+    }
+
+    .MuiChip-root {
+        background: rgba(15, 76, 117, 0.12);
+        color: #0f4c75;
+    }
 }
 
 @media screen {
@@ -39,11 +149,11 @@
         }
   
         .projects-container .projects-grid {
-            display: block;
+            grid-template-columns: 1fr;
         }
-      
-        .projects-container .projects-grid .project {
-            padding-bottom: 5%;
+
+        .project-dialog .MuiDialogContent-root {
+            padding: 2rem 1.25rem 1.5rem;
         }
     }
 }

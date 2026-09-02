@@ -1,69 +1,58 @@
 import React from "react";
-import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
-import '../assets/styles/Timeline.scss'
+import { faBriefcase, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import '../assets/styles/Timeline.scss';
+
+const education = [
+  { date: '2025 - 2026', title: 'Master 1 MIND/DAC', institution: 'Sorbonne University, Paris, France', description: 'AI, Machine Learning, Deep Learning, Natural Language Processing.' },
+  { date: '2022 - 2025', title: 'Bachelor Computer Science', institution: 'Sorbonne University, Paris, France', description: 'Automation, Data Governance, Statistical Analysis.' },
+];
+
+const internships = [
+  { date: 'Jul. 2026 - Present', title: 'Research Intern NLP', institution: 'Tsukuba University, Ibaraki, Japan', description: 'NLP, LLM, and emotion-cause extraction from breast cancer narratives.' },
+  { date: 'Jul. 2025 - Aug. 2025', title: 'Data Science Intern', institution: 'LIP6 - SU, Paris, France', description: 'Machine learning prediction of companies’ carbon footprint emissions.' },
+];
+
+type TimelineItem = {
+  date: string;
+  title: string;
+  institution: string;
+  description: string;
+};
+
+function TimelineColumn({ id, title, items, category }: { id: string; title: string; items: TimelineItem[]; category: 'education' | 'internship' }) {
+  const icon = category === 'education' ? faGraduationCap : faBriefcase;
+
+  return (
+    <section className={`timeline-column timeline-column--${category}`} id={id}>
+      <div className="timeline-heading">
+        <FontAwesomeIcon icon={icon} />
+        <h2>{title}</h2>
+      </div>
+      <div className="timeline-list">
+        {items.map((item) => (
+          <article className="timeline-card" key={`${item.date}-${item.title}`}>
+            <span className="timeline-marker" aria-hidden="true" />
+            <p className="timeline-date">{item.date}</p>
+            <h3>{item.title}</h3>
+            <h4>{item.institution}</h4>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 function Timeline() {
   return (
-    <div id="history">
-      <div className="items-container">
-        <h1>Education</h1>
-        <VerticalTimeline>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
-            contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="Jul. 2026 - Present"
-            iconStyle={{ background: '#0F4C75', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Research Intern NLP</h3>
-            <h4 className="vertical-timeline-element-subtitle">Tsukuba University, Ibaraki, Japan</h4>
-            <p>
-              NLP, LLM, Emotion-Cause extraction from 
-              Breast Cancer Narratives 
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2025 - 2026"
-            iconStyle={{ background: '#0F4C75', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Master 1 MIND/DAC</h3>
-            <h4 className="vertical-timeline-element-subtitle">Sorbonne University, Paris, France</h4>
-            <p>
-              AI, Machine Learning, Deep Learning, Natural Language Processing..
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="Jul. 2025 - Aug. 2025"
-            iconStyle={{ background: '#0F4C75', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Data Science Intern </h3>
-            <h4 className="vertical-timeline-element-subtitle">LIP6 - SU, Paris, France</h4>
-            <p>
-              Prediction with Machine Learning of companies carbon footprint emission
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2022 - 2025"
-            iconStyle={{ background: '#0F4C75', color: 'rgb(39, 40, 34)' }}
-            icon={<FontAwesomeIcon icon={faBriefcase} />}
-          >
-            <h3 className="vertical-timeline-element-title">Bachelor Computer Science</h3>
-            <h4 className="vertical-timeline-element-subtitle">Sorbonne University, Paris, France</h4>
-            <p>
-              Automation, Data Governance, Statistical Analysis
-            </p>
-          </VerticalTimelineElement>
-        </VerticalTimeline>
+    <div id="background">
+      <div className="items-container background-container">
+        <h1>Background</h1>
+        <div className="timeline-grid">
+          <TimelineColumn id="education" title="Education" items={education} category="education" />
+          <TimelineColumn id="internships" title="Internships" items={internships} category="internship" />
+        </div>
       </div>
     </div>
   );

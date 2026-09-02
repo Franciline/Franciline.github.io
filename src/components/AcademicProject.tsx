@@ -1,30 +1,42 @@
 import React from "react";
-import mock05 from '../assets/images/mock05.png';
-import mock03 from '../assets/images/mock03.png';
-import mock02 from '../assets/images/mock02.png';
+import ProjectShowcase, { ProjectDetails } from './ProjectShowcase';
 import '../assets/styles/Project.scss';
 
-function AcademicProject() {
+const academicProjects: ProjectDetails[] = [
+    {
+        title: 'RAG Implementation for LIP6',
+        date: '2026',
+        summary: 'Implemented a retrieval-augmented generation system for LIP6 at Sorbonne University.',
+        description: 'Designed and implemented a retrieval-augmented generation pipeline for LIP6 at Sorbonne University, combining document retrieval with language-model generation to produce responses grounded in relevant source material.',
+        skills: ['RAG', 'NLP', 'LLMs'],
+    },
+    {
+        title: 'BirdCLEF Species Classification',
+        date: '2026',
+        summary: 'Explored animal audio and classified species using traditional machine-learning methods.',
+        description: 'Analyzed audio from the BirdCLEF 2026 dataset and developed a species-classification approach. The project deliberately excluded deep-learning models, focusing instead on audio feature extraction and traditional machine-learning techniques.',
+        skills: ['Audio Analysis', 'Machine Learning', 'Feature Engineering'],
+    },
+    {
+        title: 'Sentiment and Speech Classification',
+        date: '2026',
+        summary: 'Applied NLP methods to movie-review sentiment and narrator classification tasks.',
+        description: 'Built classification pipelines for two language-related tasks: identifying sentiment in movie reviews and classifying narrators from speech. The project explored how textual and speech-derived features can support supervised classification.',
+        skills: ['NLP', 'Sentiment Analysis', 'Classification'],
+    },
+    {
+        title: 'Explainable Board-Game Recommendations',
+        summary: 'Compared recommendation techniques with an emphasis on explaining their suggestions.',
+        description: 'Built a recommendation system for board games and explored multiple recommendation approaches. Particular attention was given to explainability: understanding and communicating why specific games were recommended to a user.',
+        skills: ['Recommender Systems', 'Explainable AI', 'Data Analysis'],
+    },
+];
+
+function AcademicProject({ mode }: { mode: string }) {
     return (
     <div className="projects-container" id="academic-project">
-        <h1>Academic Project</h1>
-        <div className="projects-grid">
-            {/* <div className="project">
-                <a href="https://www.byuh.edu/covid-19-case-management" target="_blank" rel="noreferrer"><img src={mock05} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://www.byuh.edu/covid-19-case-management" target="_blank" rel="noreferrer"><h2>COVID-19 Case Management</h2></a>
-                <p>Built official charts for COVID/vaccination tracking for an educational institution using JavaScript and the Google Sheets API v4.</p>
-            </div>
-            <div className="project">
-                <a href="https://holokai.byuh.edu/programs-of-study" target="_blank" rel="noreferrer"><img src={mock03} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://holokai.byuh.edu/programs-of-study" target="_blank" rel="noreferrer"><h2>Programs of Study</h2></a>
-                <p>Designed and developed a custom component for a CMS-based platform using Java, Handlebars, and LESS.</p>
-            </div>
-            <div className="project">
-                <a href="https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix" target="_blank" rel="noreferrer"><img src={mock02} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix" target="_blank" rel="noreferrer"><h2>Transfer Evaluation Matrix</h2></a>
-                <p>Created an interactive CSV table generator with Java, Handlebars, and LESS for transfer-credit review.</p> */}
-            {/* </div> */}
-        </div>
+        <h1>Academic Projects</h1>
+        <ProjectShowcase projects={academicProjects} mode={mode} />
     </div>
     );
 }

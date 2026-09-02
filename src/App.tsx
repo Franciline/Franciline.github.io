@@ -33,7 +33,7 @@ function App() {
         <FadeIn transitionDuration={700}>
             <Main/>
             <Expertise/>
-            <AcademicProject/>
+            <AcademicProject mode={mode}/>
             <Timeline/>
             <SideProject/>
             <Contact/>

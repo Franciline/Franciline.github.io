@@ -1,48 +1,29 @@
-.contact_wrapper svg {
-  font-size: 1em;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
-.contact-form {
-  padding-top: 20px;
-
-  button {
-    float: right;
-    background-color: white;
-    color: #050f0b;
-  }
-
-  button:hover {
-    background-color: #5000ca;
-    color: white;
-  }
-
-  fieldset {
-    background-color: white;
-  }
-}
-
-label {
-  font-size: 1.2rem;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.form-flex {
+.contact_wrapper {
   display: flex;
-  gap: 15px;
-  padding-bottom: 15px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: #55a7f7;
+    font-weight: 600;
+
+    &:hover {
+      color: #8bc4ff;
+    }
+  }
 }
 
-.form-flex .MuiFormControl-root {
-  width: 100%;
-}
+.light-mode .contact_wrapper a {
+  color: #0a66c2;
 
-form {
-  width: 100% !important;
-}
-
-.body-form {
-  width: 100% !important;
-  margin-bottom: 15px !important;
+  &:hover {
+    color: #084f96;
+  }
 }

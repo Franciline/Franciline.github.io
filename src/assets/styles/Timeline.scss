@@ -1,38 +1,107 @@
-.vertical-timeline span {
-    color: white;
-    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+.background-container > h1 {
+    margin-bottom: 2.5rem;
 }
 
-.vertical-timeline p {
-    color: rgb(39, 40, 34);
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem;
 }
 
-.vertical-timeline-element p {
-    color: rgb(39, 40, 34);
+.timeline-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: white;
+    }
+
+    h2 {
+        margin: 0;
+    }
 }
 
-.vertical-timeline-element h3 {
-    color: rgb(39, 40, 34);
+.timeline-list {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+    padding-left: 1.8rem;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0.65rem;
+        bottom: 0.65rem;
+        left: 0.35rem;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.25);
+    }
 }
 
-.vertical-timeline-element h4 {
-    color: rgb(39, 40, 34);
-}
+.timeline-card {
+    position: relative;
+    padding: 1.4rem;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 
-.vertical-timeline-element span {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element .vertical-timeline-element-date {
-    color: white;
-}
-
-.svg-inline--fa {
-    color: white;
-}
-
-@media screen and (max-width: 1170px) {
-    .vertical-timeline-element .vertical-timeline-element-date {
+    h3, h4, p {
         color: rgb(39, 40, 34);
+    }
+
+    h3 {
+        margin: 0.4rem 0;
+    }
+
+    h4 {
+        margin: 0 0 0.8rem;
+        font-weight: 500;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.timeline-date {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.72;
+}
+
+.timeline-marker {
+    position: absolute;
+    top: 1.8rem;
+    left: -1.85rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 3px solid #1b262c;
+    border-radius: 50%;
+    background: #0f4c75;
+}
+
+.light-mode {
+    .timeline-heading svg {
+        color: #0d1116;
+    }
+
+    .timeline-list::before {
+        background: rgba(0, 0, 0, 0.16);
+    }
+
+    .timeline-marker {
+        border-color: #fff;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .timeline-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
     }
 }
