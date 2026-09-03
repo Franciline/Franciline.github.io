@@ -17,7 +17,7 @@ function Main() {
             <a href="https://linkedin.com/in/amélie-chu-123101233" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
           </div>
           <h1>Amélie Chu</h1>
-          <p>Master Student</p>
+          <p>Master’s student in AI and Data Science at Sorbonne University, seeking a 4-6 month internship applying AI to healthcare and medical challenges.</p>
 
           <div className="mobile_social_icons">
             <a href="https://github.com/franciline" target="_blank" rel="noreferrer"><GitHubIcon/></a>

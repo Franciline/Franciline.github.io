@@ -14,9 +14,9 @@
 .project-card {
     width: 100%;
     padding: 1.5rem;
-    border: 0;
+    border: 1px solid #38505B;
     border-radius: 10px;
-    background: white;
+    background: #263840;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     cursor: pointer;
     text-align: left;
@@ -24,7 +24,7 @@
 
     h2,
     p {
-        color: rgb(39, 40, 34);
+        color: #F2F5F6;
     }
 
     h2 {
@@ -60,7 +60,7 @@
 
 .project-date {
     flex: 0 0 auto;
-    color: #52606d;
+    color: #B8C5CB;
     font-size: 0.9rem;
     font-weight: 600;
 }
@@ -72,8 +72,8 @@
 }
 
 .project-card .MuiChip-root {
-    background: rgba(15, 76, 117, 0.12);
-    color: #0f4c75;
+    background: rgba(85, 167, 247, 0.14);
+    color: #BFDFFF;
     font-weight: 600;
 }
 
@@ -99,14 +99,9 @@
     }
 }
 
-.project-dialog-close {
-    position: absolute !important;
-    top: 0.75rem;
-    right: 0.75rem;
-}
-
 .project-dialog--dark {
-    background: #26353d !important;
+    background: #263840 !important;
+    border: 1px solid #38505B;
 
     h2,
     h3,
@@ -123,7 +118,8 @@
 }
 
 .project-dialog--light {
-    background: white !important;
+    background: #F3F7F9 !important;
+    border: 1px solid #DCE6EB;
 
     h2,
     h3,
@@ -137,6 +133,25 @@
     .MuiChip-root {
         background: rgba(15, 76, 117, 0.12);
         color: #0f4c75;
+    }
+}
+
+.light-mode .project-card {
+    border-color: #DCE6EB;
+    background: #F3F7F9;
+
+    h2,
+    p {
+        color: #182229;
+    }
+
+    .project-date {
+        color: #586870;
+    }
+
+    .MuiChip-root {
+        background: rgba(15, 76, 117, 0.1);
+        color: #0F4C75;
     }
 }
 

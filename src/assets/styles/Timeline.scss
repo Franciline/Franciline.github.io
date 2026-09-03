@@ -45,12 +45,13 @@
 .timeline-card {
     position: relative;
     padding: 1.4rem;
+    border: 1px solid #38505B;
     border-radius: 10px;
-    background: white;
+    background: #263840;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 
     h3, h4, p {
-        color: rgb(39, 40, 34);
+        color: #F2F5F6;
     }
 
     h3 {
@@ -72,6 +73,7 @@
     font-size: 0.9rem;
     font-weight: 600;
     opacity: 0.72;
+    color: #B8C5CB !important;
 }
 
 .timeline-marker {
@@ -96,6 +98,21 @@
 
     .timeline-marker {
         border-color: #fff;
+    }
+
+    .timeline-card {
+        border-color: #DCE6EB;
+        background: #F3F7F9;
+
+        h3,
+        h4,
+        p {
+            color: #182229;
+        }
+
+        .timeline-date {
+            color: #586870 !important;
+        }
     }
 }
 

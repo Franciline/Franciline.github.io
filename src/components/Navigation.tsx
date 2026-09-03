@@ -17,9 +17,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 
 const drawerWidth = 240;
-const navItems = [['Expertise', 'expertise'], ['Background', 'background'], ['Side Project', 'projects'], ['Academic Project', 'academic-project'], ['Contact', 'contact']];
+const navItems = [['Skills', 'skills'], ['Academic Projects', 'academic-project'], ['Background', 'background'], ['Contact', 'contact'], ['About me', 'about-page']];
 
-function Navigation({parentToChild, modeChange}: any) {
+function Navigation({parentToChild, modeChange, isAboutPage}: any) {
 
   const {mode} = parentToChild;
 
@@ -46,25 +46,33 @@ function Navigation({parentToChild, modeChange}: any) {
     };
   }, []);
 
-  const scrollToSection = (section: string) => {
-    console.log(section)
+  const navigateTo = (section: string) => {
+    if (section === 'about-page') {
+      window.location.hash = '/about';
+      return;
+    }
+
+    if (section === 'home') {
+      window.location.hash = '';
+      return;
+    }
+
     const expertiseElement = document.getElementById(section);
     if (expertiseElement) {
       expertiseElement.scrollIntoView({ behavior: 'smooth' });
-      console.log('Scrolling to:', expertiseElement);  // Debugging: Ensure the element is found
-    } else {
-      console.error('Element with id "expertise" not found');  // Debugging: Log error if element is not found
     }
   };
+
+  const displayedNavItems = isAboutPage ? [['Home', 'home']] : navItems;
 
   const drawer = (
     <Box className="navigation-bar-responsive" onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <p className="mobile-menu-top"><ListIcon/>Menu</p>
       <Divider />
       <List>
-        {navItems.map((item) => (
+        {displayedNavItems.map((item) => (
           <ListItem key={item[0]} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} onClick={() => scrollToSection(item[1])}>
+            <ListItemButton sx={{ textAlign: 'center' }} onClick={() => navigateTo(item[1])}>
               <ListItemText primary={item[0]} />
             </ListItemButton>
           </ListItem>
@@ -93,8 +101,8 @@ function Navigation({parentToChild, modeChange}: any) {
             <DarkModeIcon onClick={() => modeChange()}/>
           )}
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item[0]} onClick={() => scrollToSection(item[1])} sx={{ color: '#fff' }}>
+            {displayedNavItems.map((item) => (
+              <Button key={item[0]} onClick={() => navigateTo(item[1])} sx={{ color: '#fff' }}>
                 {item[0]}
               </Button>
             ))}

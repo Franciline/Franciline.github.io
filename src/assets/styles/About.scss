@@ -1,0 +1,140 @@
+.about-page {
+    min-height: calc(100vh - 64px);
+    padding: 8rem 10% 5rem;
+}
+
+.about-page-intro {
+    max-width: 850px;
+    margin-bottom: 4rem;
+
+    .about-page-title {
+        margin: 0 0 2rem;
+    }
+
+    .about-statement {
+        max-width: 760px;
+        margin: 0 0 1.25rem;
+        font-size: clamp(2.2rem, 5vw, 4.2rem);
+        line-height: 1.08;
+        color: #B8C5CB;
+    }
+
+    p {
+        max-width: 720px;
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+}
+
+.about-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid #38505B;
+    border-bottom: 1px solid #38505B;
+}
+
+.about-detail-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    svg {
+        color: #55a7f7;
+    }
+
+    h2 {
+        margin: 0;
+    }
+}
+
+.about-detail ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #38505B;
+        color: #F2F5F6;
+    }
+
+    small {
+        opacity: 0.65;
+    }
+}
+
+.interest-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    span {
+        padding: 0.55rem 0.9rem;
+        border: 1px solid #38505B;
+        border-radius: 999px;
+        color: #F2F5F6;
+    }
+}
+
+.volunteering-section {
+    padding-top: 3rem;
+}
+
+.volunteering-example {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.35fr) 1fr;
+    gap: 2rem;
+
+    h3,
+    p {
+        margin-top: 0;
+    }
+
+    span {
+        color: white;
+        opacity: 0.65;
+    }
+}
+
+.light-mode {
+    .about-statement {
+        color: #586870;
+    }
+
+    .about-details {
+        border-color: #DCE6EB;
+    }
+
+    .about-detail ul li,
+    .interest-list span,
+    .volunteering-example span {
+        color: #0d1116;
+    }
+
+    .about-detail ul li,
+    .interest-list span {
+        border-color: #DCE6EB;
+    }
+
+    .about-detail-heading svg {
+        color: #0f4c75;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-page {
+        padding: 7rem 5% 4rem;
+    }
+
+    .about-details,
+    .volunteering-example {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}

@@ -3,6 +3,6 @@ export { default as Footer } from "./Footer";
 export { default as Main } from "./Main";
 export { default as Expertise } from "./Expertise";
 export { default as Timeline } from "./Timeline";
-export { default as SideProject } from "./Project";
 export { default as AcademicProject } from "./AcademicProject";
 export { default as Contact } from "./Contact";
+export { default as About } from "./About";

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Chip from '@mui/material/Chip';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 
 export type ProjectDetails = {
   title: string;
@@ -49,13 +47,6 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
       >
         {selectedProject && (
           <DialogContent>
-            <IconButton
-              className="project-dialog-close"
-              onClick={() => setSelectedProject(null)}
-              aria-label="Close project details"
-            >
-              <CloseIcon />
-            </IconButton>
             <div className="project-dialog-header">
               <h2 id="project-dialog-title">{selectedProject.title}</h2>
               {selectedProject.date && <span>{selectedProject.date}</span>}
