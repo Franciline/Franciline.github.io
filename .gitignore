@@ -11,6 +11,9 @@
 # production
 /build
 
+# Local source reports (public website copies live in /public/reports)
+/report/
+
 # misc
 .DS_Store
 .env.local

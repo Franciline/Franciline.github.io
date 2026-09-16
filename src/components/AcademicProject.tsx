@@ -16,6 +16,8 @@ const academicProjects: ProjectDetails[] = [
         summary: 'Explored animal audio and classified species using traditional machine-learning methods.',
         description: 'Analyzed audio from the BirdCLEF 2026 dataset and developed a species-classification approach. The project deliberately excluded deep-learning models, focusing instead on audio feature extraction and traditional machine-learning techniques.',
         skills: ['Audio Analysis', 'Machine Learning', 'Feature Engineering'],
+        reportUrl: '/reports/BirdClef.pdf',
+        reportPreview: '/reports/birdclef-preview.png',
     },
     {
         title: 'Sentiment and Speech Classification',
@@ -23,12 +25,17 @@ const academicProjects: ProjectDetails[] = [
         summary: 'Applied NLP methods to movie-review sentiment and narrator classification tasks.',
         description: 'Built classification pipelines for two language-related tasks: identifying sentiment in movie reviews and classifying narrators from speech. The project explored how textual and speech-derived features can support supervised classification.',
         skills: ['NLP', 'Sentiment Analysis', 'Classification'],
+        reportUrl: '/reports/Sentiment.pdf',
+        reportPreview: '/reports/sentiment-preview.png',
     },
     {
-        title: 'Explainable Board-Game Recommendations',
+        title: 'Explainable Board-Game Recommendation System',
+        date: '2025',
         summary: 'Compared recommendation techniques with an emphasis on explaining their suggestions.',
         description: 'Built a recommendation system for board games and explored multiple recommendation approaches. Particular attention was given to explainability: understanding and communicating why specific games were recommended to a user.',
         skills: ['Recommender Systems', 'Explainable AI', 'Data Analysis'],
+        reportUrl: '/reports/RecSys.pdf',
+        reportPreview: '/reports/recsys-preview.png',
     },
 ];
 

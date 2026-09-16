@@ -4,8 +4,15 @@ import { faBriefcase, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import '../assets/styles/Timeline.scss';
 
 const education = [
-  { date: '2025 - 2026', title: 'Master 1 MIND/DAC', institution: 'Sorbonne University, Paris, France', description: 'AI, Machine Learning, Deep Learning, Natural Language Processing.' },
-  { date: '2022 - 2025', title: 'Bachelor Computer Science', institution: 'Sorbonne University, Paris, France', description: 'Automation, Data Governance, Statistical Analysis.' },
+  {
+    date: '2025 - 2027',
+    title: 'Master MIND/DAC',
+    titleLinkText: 'MIND/DAC',
+    titleLink: 'https://sciences.sorbonne-universite.fr/formation-sciences/masters/master-informatique/parcours-mind',
+    institution: 'Sorbonne University, Paris, France',
+    description: 'AI, Machine Learning, Deep Learning, Natural Language Processing.',
+  },
+  { date: '2022 - 2025', title: 'Bachelor Computer Science', institution: 'Sorbonne University, Paris, France' },
 ];
 
 const internships = [
@@ -16,8 +23,10 @@ const internships = [
 type TimelineItem = {
   date: string;
   title: string;
+  titleLinkText?: string;
+  titleLink?: string;
   institution: string;
-  description: string;
+  description?: string;
 };
 
 function TimelineColumn({ id, title, items, category }: { id: string; title: string; items: TimelineItem[]; category: 'education' | 'internship' }) {
@@ -34,9 +43,17 @@ function TimelineColumn({ id, title, items, category }: { id: string; title: str
           <article className="timeline-card" key={`${item.date}-${item.title}`}>
             <span className="timeline-marker" aria-hidden="true" />
             <p className="timeline-date">{item.date}</p>
-            <h3>{item.title}</h3>
+            <h3>
+              {item.titleLink && item.titleLinkText ? (
+                <>
+                  {item.title.split(item.titleLinkText)[0]}
+                  <a href={item.titleLink} target="_blank" rel="noreferrer">{item.titleLinkText}</a>
+                  {item.title.split(item.titleLinkText)[1]}
+                </>
+              ) : item.title}
+            </h3>
             <h4>{item.institution}</h4>
-            <p>{item.description}</p>
+            {item.description && <p>{item.description}</p>}
           </article>
         ))}
       </div>

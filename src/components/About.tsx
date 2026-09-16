@@ -9,11 +9,10 @@ function About() {
     <main className="about-page">
       <header className="about-page-intro">
         <h1 className="about-page-title">About me</h1>
-        <h2 className="about-statement">Curious about how data and AI can support meaningful work.</h2>
+        <h2 className="about-statement">Motivated to tackle global challenges and contribute to scientific progress, with a particular interest in healthcare and medicine.</h2>
         <p>
-          I am a master’s student in AI and Data Science at Sorbonne University. My academic work
-          explores machine learning, natural language processing, and explainable systems, with a
-          growing interest in healthcare applications.
+          My academic work explores machine learning and artificial intelligence, including natural
+          language processing and explainable systems.
         </p>
       </header>
 
@@ -24,9 +23,9 @@ function About() {
             <h2>Languages</h2>
           </div>
           <ul>
-            <li><span>Language one</span><small>Level to confirm</small></li>
-            <li><span>Language two</span><small>Level to confirm</small></li>
-            <li><span>Language three</span><small>Level to confirm</small></li>
+            <li><span>French</span><small>Native</small></li>
+            <li><span>English</span><small>Fluent · C1</small></li>
+            <li><span>Mandarin Chinese</span><small>Intermediate · B1</small></li>
           </ul>
         </section>
 
@@ -36,9 +35,9 @@ function About() {
             <h2>Interests</h2>
           </div>
           <div className="interest-list">
-            <span>AI for healthcare</span>
-            <span>Natural language processing</span>
-            <span>Add a personal interest</span>
+            <span>Arts and drawing</span>
+            <span>Cooking</span>
+            <span>Human psychology</span>
           </div>
         </section>
       </div>
@@ -50,10 +49,17 @@ function About() {
         </div>
         <div className="volunteering-example">
           <div>
-            <h3>Volunteering role</h3>
-            <span>Organisation · Dates</span>
+            <h3>Illustrator</h3>
+            <span>
+              <a href="https://alias-asso.fr" target="_blank" rel="noreferrer">ALIAS</a>{' '}
+              · 2024–2026
+            </span>
           </div>
-          <p>Add a short description of your contribution and its impact.</p>
+          <p>
+            Volunteer illustrator for the <strong>A</strong>ssociation <strong>L</strong>udique et{' '}
+            <strong>I</strong>nform<strong>A</strong>tique de <strong>S</strong>orbonne université (ALIAS). I create
+            illustrations for Instagram posts promoting the association’s events.
+          </p>
         </div>
       </section>
     </main>

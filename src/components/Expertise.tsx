@@ -8,24 +8,36 @@ import '../assets/styles/Expertise.scss';
 
 const skillGroups = [
     {
-        title: 'Languages & Web',
-        icon: <CodeIcon />,
-        skills: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'React', 'HTML', 'CSS / Sass'],
-    },
-    {
-        title: 'Machine Learning & Data',
+        title: 'Machine Learning & AI',
         icon: <InsightsIcon />,
-        skills: ['Machine Learning', 'Data Analysis', 'Feature Engineering', 'Pandas', 'PostgreSQL'],
+        skills: [
+            'Machine Learning',
+            'Deep Learning',
+            'Reinforcement Learning',
+            'Symbolic AI & Logic-Based Reasoning',
+            'Data Analysis',
+        ],
     },
     {
-        title: 'NLP & Generative AI',
+        title: 'NLP & Knowledge Systems',
         icon: <PsychologyIcon />,
-        skills: ['NLP', 'RAG', 'LLMs', 'Sentiment Analysis', 'Hugging Face', 'LangChain'],
+        skills: [
+            'Natural Language Processing (NLP)',
+            'Information Retrieval',
+            'Large Language Models (LLMs)',
+            'Retrieval-Augmented Generation (RAG)',
+            'Knowledge Graphs',
+        ],
     },
     {
-        title: 'Tools & Platforms',
+        title: 'Frameworks & Libraries',
         icon: <BuildIcon />,
-        skills: ['Git', 'GitHub', 'Docker', 'Linux', 'AWS', 'Azure'],
+        skills: ['HuggingFace', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy'],
+    },
+    {
+        title: 'Programming & Tools',
+        icon: <CodeIcon />,
+        skills: ['Python', 'C', 'Git', 'Jupyter', 'Linux', 'Bash'],
     },
 ];
 
