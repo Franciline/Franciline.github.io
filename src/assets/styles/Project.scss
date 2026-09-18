@@ -22,6 +22,8 @@
     background: #263840;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
     text-align: left;
     transition: transform 180ms ease, box-shadow 180ms ease;
 
@@ -93,6 +95,10 @@
     }
 }
 
+.project-placeholder-thumbnail {
+    background: #050607;
+}
+
 .project-date {
     flex: 0 0 auto;
     color: #B8C5CB;
@@ -146,6 +152,43 @@
     }
 }
 
+.project-metadata-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+
+    h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        white-space: nowrap;
+    }
+}
+
+.project-collaborators {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: inherit;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    svg {
+        width: 1.15rem;
+        height: 1.15rem;
+    }
+}
+
 .project-report-preview {
     display: block;
     overflow: hidden;
@@ -167,9 +210,15 @@
     }
 }
 
-.project-report-link {
-    display: inline-block;
+.project-resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin-top: 1.5rem;
+}
+
+.project-resource-link {
+    display: inline-block;
     padding: 0.65rem 1rem;
     border-radius: 6px;
     background: #0f4c75;
@@ -179,6 +228,22 @@
 
     &:hover {
         background: #14679d;
+    }
+}
+
+.project-code-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: #344854;
+
+    svg {
+        width: 1.15rem;
+        height: 1.15rem;
+    }
+
+    &:hover {
+        background: #46606f;
     }
 }
 
@@ -198,6 +263,10 @@
     .MuiChip-root {
         background: rgba(255, 255, 255, 0.12);
     }
+
+    .project-collaborators a {
+        color: white;
+    }
 }
 
 .project-dialog--light {
@@ -215,6 +284,10 @@
 
     .MuiChip-root {
         background: rgba(15, 76, 117, 0.12);
+        color: #0f4c75;
+    }
+
+    .project-collaborators a {
         color: #0f4c75;
     }
 }
@@ -256,6 +329,11 @@
 
         .project-dialog-layout {
             grid-template-columns: 1fr;
+        }
+
+        .project-metadata-grid {
+            grid-template-columns: 1fr;
+            gap: 0;
         }
 
         .project-report-preview {

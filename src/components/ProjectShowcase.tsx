@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import Chip from '@mui/material/Chip';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
+type Collaborator = {
+  name: string;
+  linkedinUrl: string;
+};
 
 export type ProjectDetails = {
   title: string;
@@ -9,8 +16,11 @@ export type ProjectDetails = {
   summary: string;
   description: string;
   skills: string[];
+  collaborators?: Collaborator[];
   reportUrl?: string;
   reportPreview?: string;
+  repositoryUrl?: string;
+  placeholderPreview?: boolean;
 };
 
 function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode: string }) {
@@ -27,10 +37,18 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
             onClick={() => setSelectedProject(project)}
             aria-label={`Open details for ${project.title}`}
           >
-            {project.reportPreview && (
-              <div className="project-report-thumbnail">
-                <img src={project.reportPreview} alt={`Preview page from the ${project.title} report`} loading="lazy" />
-                <span>Report available</span>
+            {(project.reportPreview || project.placeholderPreview) && (
+              <div
+                className={`project-report-thumbnail${project.placeholderPreview ? ' project-placeholder-thumbnail' : ''}`}
+                role={project.placeholderPreview ? 'img' : undefined}
+                aria-label={project.placeholderPreview ? `Image placeholder for ${project.title}` : undefined}
+              >
+                {project.reportPreview && (
+                  <>
+                    <img src={project.reportPreview} alt={`Preview page from the ${project.title} report`} loading="lazy" />
+                    <span>Report available</span>
+                  </>
+                )}
               </div>
             )}
             <div className="project-card-header">
@@ -73,14 +91,46 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
               )}
               <div>
                 <p>{selectedProject.description}</p>
-                <h3>Skills and methods</h3>
-                <div className="project-skills">
-                  {selectedProject.skills.map((skill) => <Chip key={skill} label={skill} />)}
+                <div className="project-metadata-grid">
+                  <section>
+                    <h3>Skills and methods</h3>
+                    <div className="project-skills">
+                      {selectedProject.skills.map((skill) => <Chip key={skill} label={skill} />)}
+                    </div>
+                  </section>
+                  {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
+                    <section>
+                      <h3>Collaborators</h3>
+                      <div className="project-collaborators">
+                        {selectedProject.collaborators.map((collaborator) => (
+                          <a
+                            key={collaborator.name}
+                            href={collaborator.linkedinUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <LinkedInIcon />
+                            {collaborator.name}
+                          </a>
+                        ))}
+                      </div>
+                    </section>
+                  )}
                 </div>
-                {selectedProject.reportUrl && (
-                  <a className="project-report-link" href={selectedProject.reportUrl} target="_blank" rel="noreferrer">
-                    View full report
-                  </a>
+                {(selectedProject.reportUrl || selectedProject.repositoryUrl) && (
+                  <div className="project-resource-links">
+                    {selectedProject.reportUrl && (
+                      <a className="project-resource-link" href={selectedProject.reportUrl} target="_blank" rel="noreferrer">
+                        View full report
+                      </a>
+                    )}
+                    {selectedProject.repositoryUrl && (
+                      <a className="project-resource-link project-code-link" href={selectedProject.repositoryUrl} target="_blank" rel="noreferrer">
+                        <GitHubIcon />
+                        View code
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </div>

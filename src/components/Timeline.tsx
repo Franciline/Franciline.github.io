@@ -16,7 +16,7 @@ const education = [
 ];
 
 const internships = [
-  { date: 'Jul. 2026 - Present', title: 'Research Intern NLP', institution: 'Tsukuba University, Ibaraki, Japan', description: 'NLP, LLM, and emotion-cause extraction from breast cancer narratives.' },
+  { date: 'Jul. 2026 - Aug. 2026', title: 'Research Intern NLP', institution: 'Tsukuba University, Ibaraki, Japan', description: 'NLP, LLM, and emotion-cause extraction from breast cancer narratives.' },
   { date: 'Jul. 2025 - Aug. 2025', title: 'Data Science Intern', institution: 'LIP6 - SU, Paris, France', description: 'Machine learning prediction of companies’ carbon footprint emissions.' },
 ];
 
