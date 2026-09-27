@@ -6,18 +6,41 @@ import '../assets/styles/Timeline.scss';
 const education = [
   {
     date: '2025 - 2027',
-    title: 'Master MIND/DAC',
-    titleLinkText: 'MIND/DAC',
+    title: 'Master’s Degree in Computer Science - MIND',
+    titleLinkText: 'MIND',
     titleLink: 'https://sciences.sorbonne-universite.fr/formation-sciences/masters/master-informatique/parcours-mind',
     institution: 'Sorbonne University, Paris, France',
-    description: 'AI, Machine Learning, Deep Learning, Natural Language Processing.',
+    description: 'Parcours Machine Learning, INtelligence artificielle et Données.',
   },
-  { date: '2022 - 2025', title: 'Bachelor Computer Science', institution: 'Sorbonne University, Paris, France' },
+  {
+    date: '2022 - 2025',
+    title: 'Bachelor’s Degree in Computer Science - Intensive Track',
+    institution: 'Sorbonne University, Paris, France',
+    description: 'Intensive computer science program with additional mathematics coursework and a focus on data science, machine learning, and AI.',
+  },
 ];
 
 const internships = [
-  { date: 'Jul. 2026 - Aug. 2026', title: 'Research Intern NLP', institution: 'Tsukuba University, Ibaraki, Japan', description: 'NLP, LLM, and emotion-cause extraction from breast cancer narratives.' },
-  { date: 'Jul. 2025 - Aug. 2025', title: 'Data Science Intern', institution: 'LIP6 - SU, Paris, France', description: 'Machine learning prediction of companies’ carbon footprint emissions.' },
+  {
+    date: 'Jul. 2026 - Aug. 2026',
+    title: 'NLP Research Intern',
+    institution: 'University of Tsukuba, Ibaraki, Japan',
+    highlights: [
+      'Developed a data collection and preprocessing pipeline for longitudinal patient narratives.',
+      'Designed annotation guidelines and prompting strategies for emotion-cause extraction.',
+      'Built an automated framework to benchmark multiple open-weight LLMs and conducted systematic error analysis to compare performance and identify extraction limitations.',
+    ],
+  },
+  {
+    date: 'Jul. 2025 - Aug. 2025',
+    title: 'Data Science Intern',
+    institution: 'LIP6 - Sorbonne University, Paris, France',
+    highlights: [
+      'Cleaned, preprocessed, and explored corporate carbon-footprint data through statistical analysis and visualization.',
+      'Developed classification and regression models to support carbon-emissions estimation and compared their performance using task-appropriate metrics.',
+      'Synthesized findings into structured reports and presented the results to stakeholders.',
+    ],
+  },
 ];
 
 type TimelineItem = {
@@ -27,6 +50,7 @@ type TimelineItem = {
   titleLink?: string;
   institution: string;
   description?: string;
+  highlights?: string[];
 };
 
 function TimelineColumn({ id, title, items, category }: { id: string; title: string; items: TimelineItem[]; category: 'education' | 'internship' }) {
@@ -54,6 +78,11 @@ function TimelineColumn({ id, title, items, category }: { id: string; title: str
             </h3>
             <h4>{item.institution}</h4>
             {item.description && <p>{item.description}</p>}
+            {item.highlights && (
+              <ul className="timeline-highlights">
+                {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+              </ul>
+            )}
           </article>
         ))}
       </div>
@@ -67,8 +96,8 @@ function Timeline() {
       <div className="items-container background-container">
         <h1>Background</h1>
         <div className="timeline-grid">
-          <TimelineColumn id="education" title="Education" items={education} category="education" />
           <TimelineColumn id="internships" title="Internships" items={internships} category="internship" />
+          <TimelineColumn id="education" title="Education" items={education} category="education" />
         </div>
       </div>
     </div>

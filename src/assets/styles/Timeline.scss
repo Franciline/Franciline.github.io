@@ -4,7 +4,7 @@
 
 .timeline-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 4rem;
 }
 
@@ -29,6 +29,7 @@
     position: relative;
     display: grid;
     gap: 1.5rem;
+    max-width: 900px;
     padding-left: 1.8rem;
 
     &::before {
@@ -44,13 +45,9 @@
 
 .timeline-card {
     position: relative;
-    padding: 1.4rem;
-    border: 1px solid #38505B;
-    border-radius: 10px;
-    background: #263840;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    padding: 0 0 0.5rem;
 
-    h3, h4, p {
+    h3, h4, p, li {
         color: #F2F5F6;
     }
 
@@ -68,6 +65,16 @@
     }
 }
 
+.timeline-highlights {
+    margin: 0;
+    padding-left: 1.2rem;
+    line-height: 1.5;
+
+    li + li {
+        margin-top: 0.45rem;
+    }
+}
+
 .timeline-date {
     margin: 0;
     font-size: 0.9rem;
@@ -78,7 +85,7 @@
 
 .timeline-marker {
     position: absolute;
-    top: 1.8rem;
+    top: 0.45rem;
     left: -1.85rem;
     width: 0.75rem;
     height: 0.75rem;
@@ -101,12 +108,10 @@
     }
 
     .timeline-card {
-        border-color: #DCE6EB;
-        background: #F3F7F9;
-
         h3,
         h4,
-        p {
+        p,
+        li {
             color: #182229;
         }
 

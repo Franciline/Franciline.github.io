@@ -15,6 +15,8 @@ export type ProjectDetails = {
   date?: string;
   summary: string;
   description: string;
+  keyResults?: string[];
+  keyResultsTitle?: string;
   skills: string[];
   collaborators?: Collaborator[];
   reportUrl?: string;
@@ -44,10 +46,7 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
                 aria-label={project.placeholderPreview ? `Image placeholder for ${project.title}` : undefined}
               >
                 {project.reportPreview && (
-                  <>
-                    <img src={project.reportPreview} alt={`Preview page from the ${project.title} report`} loading="lazy" />
-                    <span>Report available</span>
-                  </>
+                  <img src={project.reportPreview} alt={`Preview page from the ${project.title} report`} loading="lazy" />
                 )}
               </div>
             )}
@@ -77,7 +76,7 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
               <h2 id="project-dialog-title">{selectedProject.title}</h2>
               {selectedProject.date && <span>{selectedProject.date}</span>}
             </div>
-            <div className={selectedProject.reportPreview ? 'project-dialog-layout' : undefined}>
+            <div className="project-dialog-top">
               {selectedProject.reportPreview && (
                 <a
                   className="project-report-preview"
@@ -89,50 +88,69 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
                   <img src={selectedProject.reportPreview} alt={`Preview page from the ${selectedProject.title} report`} />
                 </a>
               )}
-              <div>
-                <p>{selectedProject.description}</p>
-                <div className="project-metadata-grid">
+              {!selectedProject.reportPreview && (
+                <div className="project-report-placeholder" role="img" aria-label="Report not available">
+                  <span>Report not available</span>
+                </div>
+              )}
+              <div className="project-dialog-sidebar">
+                <section>
+                  <h3>Keywords</h3>
+                  <div className="project-skills">
+                    {selectedProject.skills.map((skill) => <Chip key={skill} label={skill} />)}
+                  </div>
+                </section>
+                {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
                   <section>
-                    <h3>Skills and methods</h3>
-                    <div className="project-skills">
-                      {selectedProject.skills.map((skill) => <Chip key={skill} label={skill} />)}
+                    <h3>Collaborators</h3>
+                    <div className="project-collaborators">
+                      {selectedProject.collaborators.map((collaborator) => (
+                        <a
+                          key={collaborator.name}
+                          href={collaborator.linkedinUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <LinkedInIcon />
+                          {collaborator.name}
+                        </a>
+                      ))}
                     </div>
                   </section>
-                  {selectedProject.collaborators && selectedProject.collaborators.length > 0 && (
-                    <section>
-                      <h3>Collaborators</h3>
-                      <div className="project-collaborators">
-                        {selectedProject.collaborators.map((collaborator) => (
-                          <a
-                            key={collaborator.name}
-                            href={collaborator.linkedinUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <LinkedInIcon />
-                            {collaborator.name}
-                          </a>
-                        ))}
-                      </div>
-                    </section>
-                  )}
-                </div>
+                )}
                 {(selectedProject.reportUrl || selectedProject.repositoryUrl) && (
-                  <div className="project-resource-links">
-                    {selectedProject.reportUrl && (
-                      <a className="project-resource-link" href={selectedProject.reportUrl} target="_blank" rel="noreferrer">
-                        View full report
-                      </a>
-                    )}
-                    {selectedProject.repositoryUrl && (
-                      <a className="project-resource-link project-code-link" href={selectedProject.repositoryUrl} target="_blank" rel="noreferrer">
-                        <GitHubIcon />
-                        View code
-                      </a>
-                    )}
-                  </div>
+                  <section className="project-resources">
+                    <h3>Resources</h3>
+                    <div className="project-resource-links">
+                      {selectedProject.reportUrl && (
+                        <a className="project-resource-link" href={selectedProject.reportUrl} target="_blank" rel="noreferrer">
+                          View full report
+                        </a>
+                      )}
+                      {selectedProject.repositoryUrl && (
+                        <a className="project-resource-link project-code-link" href={selectedProject.repositoryUrl} target="_blank" rel="noreferrer">
+                          <GitHubIcon />
+                          View code
+                        </a>
+                      )}
+                    </div>
+                  </section>
                 )}
               </div>
+            </div>
+            <div className="project-dialog-description">
+              <h3>Overview</h3>
+              <p>{selectedProject.description}</p>
+              {selectedProject.keyResults && selectedProject.keyResults.length > 0 && (
+                <section className="project-key-results">
+                  <h3>{selectedProject.keyResultsTitle || 'Key results'}</h3>
+                  <ul>
+                    {selectedProject.keyResults.map((result, index) => (
+                      <li key={`${selectedProject.title}-result-${index}`}>{result}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
             </div>
           </DialogContent>
         )}
