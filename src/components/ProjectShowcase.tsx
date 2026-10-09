@@ -48,15 +48,21 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
                 {project.reportPreview && (
                   <img src={project.reportPreview} alt={`Preview page from the ${project.title} report`} loading="lazy" />
                 )}
+                {project.placeholderPreview && !project.reportPreview && (
+                  <div className="project-preview-label" aria-hidden="true">Local RAG<br /><small>Retrieval · Generation · Evaluation</small></div>
+                )}
               </div>
             )}
             <div className="project-card-header">
               <h2>{project.title}</h2>
-              {project.date && <span className="project-date">{project.date}</span>}
             </div>
             <p>{project.summary}</p>
             <div className="project-skills" aria-label="Skills used">
-              {project.skills.map((skill) => <Chip key={skill} label={skill} size="small" />)}
+              {project.skills.slice(0, 3).map((skill) => <Chip key={skill} label={skill} size="small" />)}
+            </div>
+            <div className="project-card-footer">
+              {project.date && <span className="project-date">{project.date}</span>}
+              <span className="project-card-action">View project →</span>
             </div>
           </button>
         ))}
@@ -89,8 +95,8 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
                 </a>
               )}
               {!selectedProject.reportPreview && (
-                <div className="project-report-placeholder" role="img" aria-label="Report not available">
-                  <span>Report not available</span>
+                <div className="project-report-placeholder" role="img" aria-label={selectedProject.reportUrl ? 'Report preview not available' : 'Report not available'}>
+                  <span>{selectedProject.reportUrl ? 'Report preview not available' : 'Report not available'}</span>
                 </div>
               )}
               <div className="project-dialog-sidebar">

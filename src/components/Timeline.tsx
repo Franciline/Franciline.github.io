@@ -5,7 +5,7 @@ import '../assets/styles/Timeline.scss';
 
 const education = [
   {
-    date: '2025 - 2027',
+    date: '2025-2027 (expected)',
     title: 'Master’s Degree in Computer Science - MIND',
     titleLinkText: 'MIND',
     titleLink: 'https://sciences.sorbonne-universite.fr/formation-sciences/masters/master-informatique/parcours-mind',
@@ -23,22 +23,25 @@ const education = [
 const internships = [
   {
     date: 'Jul. 2026 - Aug. 2026',
-    title: 'NLP Research Intern',
-    institution: 'University of Tsukuba, Ibaraki, Japan',
+    title: 'NLP Research Intern | LLM Evaluation for Patient Narratives',
+    institution: 'KaLC Lab - University of Tsukuba, Ibaraki, Japan',
     highlights: [
-      'Developed a data collection and preprocessing pipeline for longitudinal patient narratives.',
-      'Designed annotation guidelines and prompting strategies for emotion-cause extraction.',
-      'Built an automated framework to benchmark multiple open-weight LLMs and conducted systematic error analysis to compare performance and identify extraction limitations.',
+      <>Built a privacy-aware collection and preprocessing pipeline for <strong>18 breast cancer patient blogs and 2,500+ posts</strong> across two platforms, following scraping policies.</>,
+      <>Iteratively refined emotion-cause annotation guidelines across three versions and curated a <strong>147-pair reference set</strong>.</>,
+      'Designed prompting strategies and evaluated zero-shot emotion-cause extraction with GPT-OSS, Qwen 3.6, and Gemma 4, using a proprietary model as a performance reference.',
+      'Developed an automated evaluation framework combining ROUGE-L, sentence-embedding cosine similarity, and Hungarian matching.',
+      'Conducted systematic error analysis to compare model performance and identify extraction limitations.',
     ],
   },
   {
-    date: 'Jul. 2025 - Aug. 2025',
-    title: 'Data Science Intern',
+    date: 'Jun. 2025 - Jul. 2025',
+    title: 'Data Science Intern | ML for Carbon-Footprint Estimation',
     institution: 'LIP6 - Sorbonne University, Paris, France',
     highlights: [
-      'Cleaned, preprocessed, and explored corporate carbon-footprint data through statistical analysis and visualization.',
-      'Developed classification and regression models to support carbon-emissions estimation and compared their performance using task-appropriate metrics.',
-      'Synthesized findings into structured reports and presented the results to stakeholders.',
+      <>Cleaned, preprocessed, and analyzed <strong>2,029 corporate carbon-footprint records across 137 features</strong>, including missing-value handling, statistical analysis, and visualization.</>,
+      <>Developed and compared classification, regression, and <strong>Bayesian-network models</strong> across feature-encoding strategies, evaluating performance using task-appropriate metrics.</>,
+      <>Applied <strong>Bayesian networks</strong> and introduced <strong>SHALL</strong> analysis to detect outliers and generate exploratory data.</>,
+      <>Delivered structured technical reports and presented findings to <strong>10+ stakeholders</strong>.</>,
     ],
   },
 ];
@@ -50,7 +53,7 @@ type TimelineItem = {
   titleLink?: string;
   institution: string;
   description?: string;
-  highlights?: string[];
+  highlights?: React.ReactNode[];
 };
 
 function TimelineColumn({ id, title, items, category }: { id: string; title: string; items: TimelineItem[]; category: 'education' | 'internship' }) {
@@ -67,6 +70,7 @@ function TimelineColumn({ id, title, items, category }: { id: string; title: str
           <article className="timeline-card" key={`${item.date}-${item.title}`}>
             <span className="timeline-marker" aria-hidden="true" />
             <p className="timeline-date">{item.date}</p>
+            <div className="timeline-entry-content">
             <h3>
               {item.titleLink && item.titleLinkText ? (
                 <>
@@ -80,9 +84,10 @@ function TimelineColumn({ id, title, items, category }: { id: string; title: str
             {item.description && <p>{item.description}</p>}
             {item.highlights && (
               <ul className="timeline-highlights">
-                {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                {item.highlights.map((highlight, index) => <li key={`${item.title}-${index}`}>{highlight}</li>)}
               </ul>
             )}
+            </div>
           </article>
         ))}
       </div>

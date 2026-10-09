@@ -9,16 +9,18 @@ function Main() {
     <div className="container">
       <div className="about-section">
         <div className="image-wrapper">
-          <img src="female-avatar.png" alt="Avatar" />
+          <img src="/profile.jpg" alt="Amélie Chu" />
         </div>
         <div className="content">
-          <div className="social_icons">
-            <a href="https://github.com/franciline" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-            <a href="https://linkedin.com/in/amélie-chu-123101233" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
-          </div>
           <h1>Amélie Chu</h1>
-          <p>Master’s student in AI and Data Science at Sorbonne University, seeking a 5-6 months internship starting in March 2027 to apply AI to healthcare and medical challenges.</p>
+          <p>Master’s student in AI and Data Science at Sorbonne University</p>
+          <p className="hero-introduction">My work explores machine learning, natural language processing, and explainable AI, with a particular interest in healthcare and medicine. I’m seeking a 5-6 month internship starting in March 2027 to apply my knowledge to healthcare and medical challenges.</p>
+          <a className="hero-about-link" href="#/about">More about me →</a>
 
+          <div className="social_icons">
+            <a href="https://github.com/franciline" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon/></a>
+            <a href="https://linkedin.com/in/amélie-chu-123101233" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon/></a>
+          </div>
           <div className="mobile_social_icons">
             <a href="https://github.com/franciline" target="_blank" rel="noreferrer"><GitHubIcon/></a>
             <a href="https://linkedin.com/in/amélie-chu-123101233" target="_blank" rel="noreferrer"><LinkedInIcon/></a>

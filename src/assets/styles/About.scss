@@ -1,6 +1,9 @@
 .about-page {
+    max-width: 1000px;
+    margin: 0 auto;
     min-height: calc(100vh - 64px);
     padding: 8rem 10% 5rem;
+    color: #F2F5F6;
 }
 
 .about-page-intro {
@@ -8,14 +11,17 @@
     margin-bottom: 4rem;
 
     .about-page-title {
-        margin: 0 0 2rem;
+        margin: 0.75rem 0 1.5rem;
+        font-size: clamp(2.3rem, 5vw, 3.8rem);
+        line-height: 1.15;
+        letter-spacing: -0.035em;
     }
 
     .about-statement {
         max-width: 760px;
         margin: 0 0 1.25rem;
-        font-size: clamp(2.2rem, 5vw, 4.2rem);
-        line-height: 1.08;
+        font-size: 1.2rem;
+        line-height: 1.7;
         color: #B8C5CB;
     }
 
@@ -128,8 +134,66 @@
 
 @media screen and (min-width: 769px) {
     .about-page-intro .about-statement {
-        font-size: clamp(2rem, 3.5vw, 3.2rem);
+        font-size: 1.2rem;
     }
+}
+
+.about-eyebrow {
+    color: #55a7f7;
+    font-size: 0.9rem;
+}
+
+.about-beyond {
+    border-top: 1px solid #38505B;
+    padding-top: 2rem;
+}
+
+.about-personal-row {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #38505B;
+
+    > svg {
+        color: #55a7f7;
+        padding: 0.6rem;
+        border-radius: 10px;
+        background: rgba(85, 167, 247, 0.08);
+        box-sizing: content-box;
+        width: 20px;
+        height: 20px;
+    }
+
+    h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+    p { margin: 0.5rem 0 0; line-height: 1.6; color: #B8C5CB; }
+    small { color: #B8C5CB; }
+}
+
+.about-languages {
+    padding-top: 2.5rem;
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        list-style: none;
+        padding: 0;
+        gap: 1.5rem;
+    }
+
+    li { display: flex; flex-direction: column; gap: 0.4rem; }
+    small { color: #B8C5CB; }
+}
+
+.light-mode .about-page {
+    color: #182229;
+    .about-beyond, .about-personal-row { border-color: #DCE6EB; }
+    .about-personal-row p, small { color: #586870; }
+    .about-eyebrow, .about-personal-row > svg { color: #0f4c75; }
+}
+
+@media (max-width: 700px) {
+    .about-languages ul { grid-template-columns: 1fr; }
 }
 
 @media screen and (max-width: 768px) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ProjectShowcase, { ProjectDetails } from './ProjectShowcase';
 import '../assets/styles/Project.scss';
 
@@ -86,16 +86,48 @@ const academicProjects: ProjectDetails[] = [
         reportPreview: '/reports/recsys-preview.png',
         repositoryUrl: 'https://github.com/Franciline/Recommendation_system',
     },
+    {
+        title: 'Decoding the Bottle - Wine Rating Prediction',
+        date: '2025',
+        summary: 'Predicted public wine ratings with tree-based models and explained their predictions using SHAP.',
+        description: 'Collected wine data from Vivino and SimpleWine to study how price, origin, grapes, and taste profiles relate to public ratings. The project explored dataset biases, imputed missing values, and compared regression and classification models to predict ratings and identify wines rated above average within their price range.',
+        keyResultsTitle: 'Approach & Results',
+        keyResults: [
+            'Collected, harmonized, and explored wine data from two sources, investigating biases and imputing missing values.',
+            'Compared Random Forest, XGBoost, and CatBoost models; CatBoost performed best among the tested configurations.',
+            'Achieved a held-out MAE of 0.163 stars and R² of 0.553 for public-rating prediction.',
+            'Achieved F1 of 0.684 and 66.7% accuracy for predicting above-average ratings within a price range.',
+            'Used SHAP to interpret model predictions, with price emerging as the strongest driver of predicted ratings.',
+        ],
+        skills: ['Data Science', 'Regression', 'Classification', 'CatBoost', 'SHAP', 'Data Collection'],
+        collaborators: [
+            { name: 'Ekaterina Bogush', linkedinUrl: 'https://www.linkedin.com/in/ekaterina-bogush-42a415250/' },
+        ],
+        reportUrl: '/reports/DALAS_wine_project.pdf',
+        reportPreview: '/reports/wine-preview.png',
+        repositoryUrl: 'https://github.com/BshKatrin/Wine-Quality---DALAS',
+    },
 ];
 
 function AcademicProject({ mode }: { mode: string }) {
+    const [showAll, setShowAll] = useState(false);
     return (
     <div className="projects-container" id="academic-project">
         <header className="projects-section-heading">
             <h1>Academic Projects</h1>
             <p>Featured work</p>
         </header>
-        <ProjectShowcase projects={academicProjects} mode={mode} />
+        <ProjectShowcase projects={showAll ? academicProjects : academicProjects.slice(0, 6)} mode={mode} />
+        {academicProjects.length > 6 && (
+            <button
+                className="projects-show-more project-resource-link"
+                type="button"
+                aria-expanded={showAll}
+                onClick={() => setShowAll(!showAll)}
+            >
+                {showAll ? 'Show less' : 'Show more projects'}
+            </button>
+        )}
     </div>
     );
 }

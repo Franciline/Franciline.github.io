@@ -26,8 +26,21 @@
   
 .projects-container .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
+}
+
+.projects-show-more {
+    align-self: center;
+    margin-top: 1.5rem;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:focus-visible {
+        outline: 3px solid #55a7f7;
+        outline-offset: 4px;
+    }
 }
 
 .project-card {
@@ -35,7 +48,7 @@
     flex-direction: column;
     width: 100%;
     box-sizing: border-box;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border: 1px solid #38505B;
     border-radius: 10px;
     background: #263840;
@@ -53,12 +66,12 @@
 
     h2 {
         margin: 0;
-        font-size: 1.35rem;
+        font-size: 1.2rem;
     }
 
     p {
-        margin: 1rem 0 1.25rem;
-        line-height: 1.55;
+        margin: 0.75rem 0;
+        line-height: 1.4;
     }
 
     &:focus-visible {
@@ -84,10 +97,10 @@
 
 .project-report-thumbnail {
     position: relative;
-    flex: 0 0 190px;
-    height: 190px;
+    flex: 0 0 145px;
+    height: 145px;
     box-sizing: border-box;
-    margin: -1.5rem -1.5rem 1.5rem;
+    margin: -1.25rem -1.25rem 1rem;
     overflow: hidden;
     border-bottom: 1px solid #38505B;
     border-radius: 9px 9px 0 0;
@@ -115,7 +128,49 @@
 }
 
 .project-placeholder-thumbnail {
-    background: #050607;
+    background: linear-gradient(135deg, #183746, #305a70);
+}
+
+.project-preview-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 1.25rem;
+    color: #F2F5F6;
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    small {
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #BFDFFF;
+    }
+}
+
+.project-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+}
+
+.project-card-action {
+    margin-left: auto;
+    color: #BFDFFF;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.project-card .project-skills {
+    margin-bottom: 0.25rem;
+}
+
+.light-mode .project-card-action {
+    color: #0f4c75;
 }
 
 .project-date {
@@ -132,6 +187,7 @@
 }
 
 .project-card .MuiChip-root {
+    font-size: 0.72rem;
     background: rgba(85, 167, 247, 0.14);
     color: #BFDFFF;
     font-weight: 600;
@@ -415,10 +471,16 @@
 }
 
 .light-mode .project-placeholder-thumbnail {
-    background: #E3EAEE;
+    background: linear-gradient(135deg, #183746, #305a70);
 }
 
 @media screen {
+    @media (min-width: 701px) and (max-width: 1100px) {
+        .projects-container .projects-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
     @media (max-width: 700px) {
         .projects-container {
             display: block;
