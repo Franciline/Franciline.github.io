@@ -91,6 +91,30 @@
     }
 }
 
+.timeline-description a {
+    color: #55a7f7;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.timeline-column--internship .timeline-card .timeline-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #B8C5CB;
+}
+
+.light-mode .timeline-column--internship .timeline-card .timeline-description {
+    color: #667780;
+}
+
+.timeline-description + .timeline-highlights {
+    margin-top: 1rem;
+}
+
+.light-mode .timeline-description a {
+    color: #0F4C75;
+}
+
 .timeline-date {
     margin: 0;
     font-size: 0.9rem;

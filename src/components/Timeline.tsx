@@ -25,6 +25,7 @@ const internships = [
     date: 'Jul. 2026 - Aug. 2026',
     title: 'NLP Research Intern | LLM Evaluation for Patient Narratives',
     institution: 'KaLC Lab - University of Tsukuba, Ibaraki, Japan',
+    description: 'Studied emotion-cause extraction from patient narratives, with potential applications in understanding and monitoring patients’ experiences during treatment. The work also aimed to establish a standardized dataset and evaluation framework for research.',
     highlights: [
       <>Built a privacy-aware collection and preprocessing pipeline for <strong>18 breast cancer patient blogs and 2,500+ posts</strong> across two platforms, following scraping policies.</>,
       <>Iteratively refined emotion-cause annotation guidelines across three versions and curated a <strong>147-pair reference set</strong>.</>,
@@ -37,6 +38,7 @@ const internships = [
     date: 'Jun. 2025 - Jul. 2025',
     title: 'Data Science Intern | ML for Carbon-Footprint Estimation',
     institution: 'LIP6 - Sorbonne University, Paris, France',
+    description: <>In collaboration with <a href="https://abc-transitionbascarbone.fr" target="_blank" rel="noreferrer">Association pour la transition Bas Carbone (ABC)</a>, explored explainable machine learning to estimate corporate carbon footprints and help companies better understand their emissions.</>,
     highlights: [
       <>Cleaned, preprocessed, and analyzed <strong>2,029 corporate carbon-footprint records across 137 features</strong>, including missing-value handling, statistical analysis, and visualization.</>,
       <>Developed and compared classification, regression, and <strong>Bayesian-network models</strong> across feature-encoding strategies, evaluating performance using task-appropriate metrics.</>,
@@ -52,7 +54,7 @@ type TimelineItem = {
   titleLinkText?: string;
   titleLink?: string;
   institution: string;
-  description?: string;
+  description?: React.ReactNode;
   highlights?: React.ReactNode[];
 };
 
@@ -81,7 +83,7 @@ function TimelineColumn({ id, title, items, category }: { id: string; title: str
               ) : item.title}
             </h3>
             <h4>{item.institution}</h4>
-            {item.description && <p>{item.description}</p>}
+            {item.description && <p className="timeline-description">{item.description}</p>}
             {item.highlights && (
               <ul className="timeline-highlights">
                 {item.highlights.map((highlight, index) => <li key={`${item.title}-${index}`}>{highlight}</li>)}
