@@ -235,6 +235,10 @@
 }
 
 .project-dialog-description {
+    strong {
+        color: #55a7f7;
+        font-weight: 500;
+    }
     margin-top: 2rem;
     font-size: 0.94rem;
 
@@ -245,6 +249,11 @@
     > p {
         margin: 0;
     }
+}
+
+.project-dialog--light .project-dialog-description strong {
+    color: #0F4C75;
+    font-weight: 700;
 }
 
 .project-key-results {

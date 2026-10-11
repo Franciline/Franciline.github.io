@@ -15,6 +15,7 @@ export type ProjectDetails = {
   date?: string;
   summary: string;
   description: string;
+  emphasis?: string[];
   keyResults?: string[];
   keyResultsTitle?: string;
   skills: string[];
@@ -24,6 +25,12 @@ export type ProjectDetails = {
   repositoryUrl?: string;
   placeholderPreview?: boolean;
 };
+
+function emphasize(text: string, phrases: string[] = []): React.ReactNode {
+  if (!phrases.length) return text;
+  const pattern = new RegExp(`(${phrases.map((phrase) => phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
+  return text.split(pattern).map((part, index) => phrases.includes(part) ? <strong key={index}>{part}</strong> : part);
+}
 
 function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode: string }) {
   const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(null);
@@ -146,13 +153,13 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
             </div>
             <div className="project-dialog-description">
               <h3>Overview</h3>
-              <p>{selectedProject.description}</p>
+              <p>{emphasize(selectedProject.description, selectedProject.emphasis)}</p>
               {selectedProject.keyResults && selectedProject.keyResults.length > 0 && (
                 <section className="project-key-results">
                   <h3>{selectedProject.keyResultsTitle || 'Key results'}</h3>
                   <ul>
                     {selectedProject.keyResults.map((result, index) => (
-                      <li key={`${selectedProject.title}-result-${index}`}>{result}</li>
+                      <li key={`${selectedProject.title}-result-${index}`}>{emphasize(result, selectedProject.emphasis)}</li>
                     ))}
                   </ul>
                 </section>

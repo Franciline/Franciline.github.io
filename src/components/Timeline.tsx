@@ -10,7 +10,7 @@ const education = [
     titleLinkText: 'MIND',
     titleLink: 'https://sciences.sorbonne-universite.fr/formation-sciences/masters/master-informatique/parcours-mind',
     institution: 'Sorbonne University, Paris, France',
-    description: 'Parcours Machine Learning, INtelligence artificielle et Données.',
+    description: 'Parcours Machine Learning, INtelligence artificielle et Données (MIND).',
   },
   {
     date: '2022 - 2025',

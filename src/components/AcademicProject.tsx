@@ -5,6 +5,7 @@ import '../assets/styles/Project.scss';
 const academicProjects: ProjectDetails[] = [
     {
         title: 'Local RAG Chatbot for LIP6',
+        emphasis: ['fully local, end-to-end RAG chatbot', 'hybrid dense and sparse search', '86.1% Recall@10 and 77.2% Hit@5', '72.6% of generated answers cited the expected source', '78.5%', 'NVIDIA DGX Spark'],
         date: '2026',
         summary: 'Developed a fully local RAG chatbot for the LIP6 institutional website.',
         description: 'Developed a fully local, end-to-end RAG chatbot for the LIP6 institutional website, covering data ingestion, retrieval, generation, evaluation, and serving. The system processes heterogeneous HTML and PDF content, structures and indexes it locally, retrieves relevant sources through hybrid dense and sparse search, and generates cited answers using locally hosted open-weight LLMs.',
@@ -26,6 +27,7 @@ const academicProjects: ProjectDetails[] = [
     },
     {
         title: 'BirdCLEF+ 2026 - Bioacoustic Species Classification',
+        emphasis: ['more than 200 species', 'severe class imbalance', '490-dimensional audio representation', 'Logistic Regression, SVC, and XGBoost', 'overlapping five-second chunk classification'],
         date: '2026',
         summary: 'Developed a classical machine-learning pipeline for bioacoustic species classification.',
         description: 'Developed a classical machine-learning pipeline to identify animal species from audio recordings and noisy, multi-species soundscapes. The task covered more than 200 species, severe class imbalance, and both single-label and multi-label classification. Under the constraint of not using deep-learning models, the project focused on handcrafted audio features and traditional machine-learning methods.',
@@ -46,6 +48,7 @@ const academicProjects: ProjectDetails[] = [
     },
     {
         title: 'Sentiment and Speech Classification',
+        emphasis: ['speaker identification', 'sentiment classification', 'bidirectional GRU/LSTM', 'CamemBERT, BERT, and RoBERTa', '0.62 to 0.81', '0.81 to 0.90'],
         date: '2026',
         summary: 'Built NLP pipelines for speaker identification and movie-review sentiment classification.',
         description: 'Built and evaluated NLP pipelines for two binary text-classification tasks: speaker identification from French presidential speeches (Chirac vs. Mitterrand) and sentiment classification of English movie reviews. The project compared text preprocessing, representations, classical machine learning, recurrent networks, and transformer-based models, exploring how textual and sequential features support supervised classification.',
@@ -66,6 +69,7 @@ const academicProjects: ProjectDetails[] = [
     },
     {
         title: 'Explainable Board-Game Recommendation System',
+        emphasis: ['98.1% sparse user-item matrix', '20 factors', '2,614 games', '30 clusters', '96,000 reviews'],
         date: '2025',
         summary: 'Developed explainable board-game recommendations from ratings, reviews, and game descriptions.',
         description: 'Developed an explainable recommendation system for board games using TricTrac user ratings, reviews, and game descriptions. The project compared collaborative-filtering and content-based approaches, then used NLP to make recommendations more interpretable through cluster explanations and personalized, review-style recommendations.',
@@ -88,6 +92,7 @@ const academicProjects: ProjectDetails[] = [
     },
     {
         title: 'Decoding the Bottle - Wine Rating Prediction',
+        emphasis: ['CatBoost', 'MAE of 0.163 stars', 'R² of 0.553', 'F1 of 0.684', '66.7% accuracy', 'SHAP'],
         date: '2025',
         summary: 'Predicted public wine ratings with tree-based models and explained their predictions using SHAP.',
         description: 'Collected wine data from Vivino and SimpleWine to study how price, origin, grapes, and taste profiles relate to public ratings. The project explored dataset biases, imputed missing values, and compared regression and classification models to predict ratings and identify wines rated above average within their price range.',
@@ -114,7 +119,7 @@ function AcademicProject({ mode }: { mode: string }) {
     return (
     <div className="projects-container" id="academic-project">
         <header className="projects-section-heading">
-            <h1>Academic Projects</h1>
+            <h1>Projects</h1>
             <p>Featured work</p>
         </header>
         <ProjectShowcase projects={showAll ? academicProjects : academicProjects.slice(0, 6)} mode={mode} />
