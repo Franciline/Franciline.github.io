@@ -19,11 +19,11 @@ function Main() {
 
           <div className="social_icons">
             <a href="https://github.com/franciline" target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon/></a>
-            <a href="https://linkedin.com/in/amélie-chu-123101233" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon/></a>
+            <a href="https://www.linkedin.com/in/amelie-chu" target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon/></a>
           </div>
           <div className="mobile_social_icons">
             <a href="https://github.com/franciline" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-            <a href="https://linkedin.com/in/amélie-chu-123101233" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <a href="https://www.linkedin.com/in/amelie-chu" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
           </div>
         </div>
       </div>

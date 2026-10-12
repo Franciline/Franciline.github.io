@@ -9,7 +9,7 @@ function Contact() {
           <h1>Contact</h1>
           <p>
             Contact me on{' '}
-            <a href="https://linkedin.com/in/amélie-chu-123101233" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/amelie-chu" target="_blank" rel="noreferrer">
               LinkedIn
             </a>
           </p>

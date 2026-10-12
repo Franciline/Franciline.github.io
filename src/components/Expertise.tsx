@@ -13,6 +13,7 @@ const skillGroups = [
         skills: [
             'Machine Learning',
             'Deep Learning',
+            'Computer Vision',
             'Reinforcement Learning',
             'Symbolic AI & Logic-Based Reasoning',
             'Data Analysis',
@@ -32,12 +33,12 @@ const skillGroups = [
     {
         title: 'Frameworks & Libraries',
         icon: <BuildIcon />,
-        skills: ['HuggingFace', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy'],
+        skills: ['HuggingFace', 'PyTorch', 'MONAI', 'Scikit-learn', 'Pandas', 'NumPy'],
     },
     {
         title: 'Programming & Tools',
         icon: <CodeIcon />,
-        skills: ['Python', 'C', 'Git', 'Jupyter', 'Linux', 'Bash'],
+        skills: ['Python', 'C', 'Git', 'Jupyter', 'Linux', 'Bash', 'Docker', 'AWS EC2', 'GitHub Actions'],
     },
 ];
 
