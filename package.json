@@ -29,7 +29,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "prestart": "node scripts/prerender.cjs --projects-only",
+    "prebuild": "node scripts/prerender.cjs --projects-only",
+    "build": "react-scripts build && node scripts/prerender.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

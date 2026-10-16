@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decoding the Bottle | Amélie Chu</title>
+  <meta name="description" content="Wine rating prediction using Random Forest, XGBoost, CatBoost and SHAP. A data science project by Amélie Chu and Ekaterina Bogush.">
+  <link rel="stylesheet" href="/projects/project-page.css">
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation"><a href="/#academic-project">← All projects</a><a href="/">Amélie Chu</a></nav>
+  <main>
+    <header class="project-hero">
+      <p class="eyebrow">Data Science · 2025</p>
+      <h1>Decoding the Bottle</h1>
+      <p class="lead">What can a wine’s price, origin, grapes, and taste profile tell us about its public rating?</p>
+      <p class="intro">Predicting wine ratings with machine learning, then explaining the patterns behind the predictions.</p>
+      <div class="tags" aria-label="Project keywords"><span>Data Science</span><span>Regression</span><span>Classification</span><span>CatBoost</span><span>SHAP</span><span>Data Collection</span></div>
+      <p class="credits">A DALAS course project by Amélie Chu and <a href="https://www.linkedin.com/in/ekaterina-bogush-42a415250/">Ekaterina Bogush</a>.</p>
+      <div class="resources"><a href="/reports/DALAS_wine_project.pdf">Read the report ↗</a><a href="https://github.com/BshKatrin/Wine-Quality---DALAS">View code ↗</a></div>
+    </header>
+
+    <section aria-labelledby="overview"><h2 id="overview">Overview</h2>
+      <p>Collected wine data from Vivino and SimpleWine to study how price, origin, grapes, and taste profiles relate to public ratings. The project explored dataset biases, imputed missing values, and compared regression and classification models to predict ratings and identify wines rated above average within their price range.</p>
+    </section>
+
+    <section aria-labelledby="card-results"><h2 id="card-results">Approach & Results</h2>
+      <ul>
+        <li>Collected, harmonized, and explored wine data from two sources, investigating biases and imputing missing values.</li>
+        <li>Compared Random Forest, XGBoost, and <strong>CatBoost</strong> models; CatBoost performed best among the tested configurations.</li>
+        <li>Achieved a held-out <strong>MAE of 0.163 stars</strong> and <strong>R² of 0.553</strong> for public-rating prediction.</li>
+        <li>Achieved <strong>F1 of 0.684</strong> and <strong>66.7% accuracy</strong> for predicting above-average ratings within a price range.</li>
+        <li>Used <strong>SHAP</strong> to interpret model predictions, with price emerging as the strongest driver of predicted ratings.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="approach"><h2 id="approach">From data to predictions</h2>
+      <ol class="steps">
+        <li><h3>Collect and prepare</h3><p>Harmonized data from two sources, normalized prices to USD and a 750 ml bottle, explored missingness, and imputed taste attributes using wine-type groupings. Inputs included origin, vintage, winery, grapes, food pairings, alcohol, and taste characteristics.</p></li>
+        <li><h3>Compare models</h3><p>Evaluated Random Forest, XGBoost, and CatBoost. The report uses an <strong>80/20 train-test split stratified by country</strong> and <strong>five-fold cross-validation</strong> on the training data to compare models.</p></li>
+        <li><h3>Account for price</h3><p>For classification, adjusted ratings relative to the mean within price bins and excluded price from the model inputs. The resulting target distinguishes wines rated above or below their price-group average.</p></li>
+        <li><h3>Explain predictions</h3><p>Used feature importance and <strong>SHAP</strong> to examine which variables influence predictions and whether their contributions increase or decrease a predicted rating.</p></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="results"><h2 id="results">Results</h2>
+      <p><strong>CatBoost performed best among the tested configurations</strong> for both tasks. These are the held-out test results recorded in the project report.</p>
+      <div class="table-scroll"><table>
+        <caption>CatBoost test performance - report Tables 3 and 4</caption>
+        <thead><tr><th scope="col">Task</th><th scope="col">Metric</th><th scope="col">Result</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" rowspan="3">Mean public rating</th><td>Mean absolute error</td><td><strong>0.1626 stars</strong></td></tr>
+          <tr><td>Mean squared error</td><td>0.0593</td></tr>
+          <tr><td>R²</td><td><strong>0.552</strong></td></tr>
+          <tr><th scope="row" rowspan="2">Above-average rating within a price range</th><td>F1</td><td><strong>0.684</strong></td></tr>
+          <tr><td>Accuracy</td><td><strong>66.7%</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Sources: <a href="/reports/DALAS_wine_project.pdf#page=19">report page 19</a> for regression and <a href="/reports/DALAS_wine_project.pdf#page=22">page 22</a> for classification. Lower error is better; higher R², F1, and accuracy are better.</p>
+      <p>The regression model captures part of the variation in ratings, with an average absolute error of approximately 0.16 stars. Classification is a harder question: which wines receive better ratings than their peers at similar prices?</p>
+    </section>
+
+    <section aria-labelledby="interpretation"><h2 id="interpretation">What drives the predictions?</h2>
+      <p><strong>Price was a major driver of the rating model.</strong> The SHAP analysis also highlighted vintage, alcohol, and drinking window. Higher prices generally contributed to higher predicted ratings, but this association does not establish that a higher price causes better wine quality.</p>
+      <figure><img src="/reports/wine-shap.png" alt="SHAP summary plot for wine rating regression showing price, vintage, alcohol, drinking window, winery and origin among the influential features." width="395" height="460" loading="lazy"><figcaption>Report page 24, Figure 34: each point represents a wine. SHAP values indicate how a feature shifts the model’s prediction. Red and blue denote higher and lower numerical feature values; categorical values appear gray.</figcaption></figure>
+    </section>
+
+    <section aria-labelledby="limitations"><h2 id="limitations">Limits and lessons</h2>
+      <ul>
+        <li>Ratings reflect user preferences, expectations, and the dataset’s coverage. They are not an objective quality standard.</li>
+        <li>The report notes weaker predictions for rare low and very high ratings: the model tends to pull these extremes toward more common values.</li>
+        <li>Missing taste attributes required approximate imputation. Sparse groups limited how finely the imputation could account for origin.</li>
+        <li>Price may reflect expectations or unobserved quality factors. Removing it from classification inputs does not eliminate every source of bias.</li>
+      </ul>
+      <p>The project connects data preparation, predictive modeling, and interpretation, while showing why a useful prediction still needs careful explanation.</p>
+    </section>
+    <nav class="project-pagination" aria-label="Project navigation">
+      <a href="/?project=Explainable%20Board-Game%20Recommendation%20System#academic-project"><small>← Previous project</small><span>Explainable Board-Game Recommendation System</span></a>
+      <a href="/?project=Local%20RAG%20Chatbot%20for%20LIP6#academic-project"><small>Next project →</small><span>Local RAG Chatbot for LIP6</span></a>
+    </nav>
+    <footer><a href="/#academic-project">← Back to projects</a><span>Amélie Chu</span></footer>
+  </main>
+</body>
+</html>

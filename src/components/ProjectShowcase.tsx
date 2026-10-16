@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chip from '@mui/material/Chip';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -13,6 +13,8 @@ type Collaborator = {
 export type ProjectDetails = {
   title: string;
   date?: string;
+  status?: string;
+  resourceNote?: string;
   summary: string;
   description: string;
   emphasis?: string[];
@@ -24,6 +26,8 @@ export type ProjectDetails = {
   reportPreview?: string;
   repositoryUrl?: string;
   placeholderPreview?: boolean;
+  previewLabel?: string;
+  previewCaption?: string;
 };
 
 function emphasize(text: string, phrases: string[] = []): React.ReactNode {
@@ -34,12 +38,18 @@ function emphasize(text: string, phrases: string[] = []): React.ReactNode {
 
 function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode: string }) {
   const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(null);
+  useEffect(() => {
+    const title = new URLSearchParams(window.location.search).get('project');
+    if (title) setSelectedProject(projects.find((project) => project.title === title) || null);
+  }, [projects]);
 
   return (
     <>
       <div className="projects-grid">
-        {projects.map((project) => (
-          <button
+        {projects.map((project) => {
+          const Card = 'button';
+          return (
+          <Card
             className="project-card"
             key={project.title}
             type="button"
@@ -56,13 +66,14 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
                   <img src={project.reportPreview} alt={`Preview page from the ${project.title} report`} loading="lazy" />
                 )}
                 {project.placeholderPreview && !project.reportPreview && (
-                  <div className="project-preview-label" aria-hidden="true">Local RAG<br /><small>Retrieval · Generation · Evaluation</small></div>
+                  <div className="project-preview-label" aria-hidden="true">{project.previewLabel || 'Local RAG'}<br /><small>{project.previewCaption || 'Retrieval · Generation · Evaluation'}</small></div>
                 )}
               </div>
             )}
             <div className="project-card-header">
               <h2>{project.title}</h2>
             </div>
+            {project.status && <span className="project-status">{project.status}</span>}
             <p>{project.summary}</p>
             <div className="project-skills" aria-label="Skills used">
               {project.skills.slice(0, 3).map((skill) => <Chip key={skill} label={skill} size="small" />)}
@@ -71,8 +82,8 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
               {project.date && <span className="project-date">{project.date}</span>}
               <span className="project-card-action">View project →</span>
             </div>
-          </button>
-        ))}
+          </Card>
+        ); })}
       </div>
 
       <Dialog
@@ -89,6 +100,7 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
               <h2 id="project-dialog-title">{selectedProject.title}</h2>
               {selectedProject.date && <span>{selectedProject.date}</span>}
             </div>
+            {selectedProject.status && <span className="project-status">{selectedProject.status}</span>}
             <div className="project-dialog-top">
               {selectedProject.reportPreview && (
                 <a
@@ -103,7 +115,7 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
               )}
               {!selectedProject.reportPreview && (
                 <div className="project-report-placeholder" role="img" aria-label={selectedProject.reportUrl ? 'Report preview not available' : 'Report not available'}>
-                  <span>{selectedProject.reportUrl ? 'Report preview not available' : 'Report not available'}</span>
+                  <span>{selectedProject.resourceNote || (selectedProject.reportUrl ? 'Report preview not available' : 'Report not available')}</span>
                 </div>
               )}
               <div className="project-dialog-sidebar">
@@ -137,7 +149,7 @@ function ProjectShowcase({ projects, mode }: { projects: ProjectDetails[]; mode:
                     <div className="project-resource-links">
                       {selectedProject.reportUrl && (
                         <a className="project-resource-link" href={selectedProject.reportUrl} target="_blank" rel="noreferrer">
-                          View full report
+                          View report
                         </a>
                       )}
                       {selectedProject.repositoryUrl && (

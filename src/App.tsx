@@ -9,12 +9,11 @@ import {
   Navigation,
   Footer,
 } from "./components";
-import FadeIn from './components/FadeIn';
 import './index.scss';
 
 function App() {
     const [mode, setMode] = useState<string>('dark');
-    const [isAboutPage, setIsAboutPage] = useState<boolean>(window.location.hash === '#/about');
+    const [isAboutPage, setIsAboutPage] = useState<boolean>(false);
 
     const handleModeChange = () => {
         if (mode === 'dark') {
@@ -26,6 +25,7 @@ function App() {
 
     useEffect(() => {
         const handleHashChange = () => setIsAboutPage(window.location.hash === '#/about');
+        handleHashChange();
         window.addEventListener('hashchange', handleHashChange);
         return () => window.removeEventListener('hashchange', handleHashChange);
     }, []);
@@ -41,13 +41,13 @@ function App() {
         {isAboutPage ? (
             <About />
         ) : (
-            <FadeIn transitionDuration={700}>
+            <div>
                 <Main/>
-                <Expertise/>
                 <AcademicProject mode={mode}/>
+                <Expertise/>
                 <Timeline/>
                 <Contact/>
-            </FadeIn>
+            </div>
         )}
         <Footer />
     </div>

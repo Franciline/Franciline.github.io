@@ -4,14 +4,18 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+const container = document.getElementById('root') as HTMLElement;
+const app = (
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
+
+if (container.dataset.prerendered === 'true') {
+  ReactDOM.hydrateRoot(container, app);
+} else {
+  ReactDOM.createRoot(container).render(app);
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -11,11 +11,7 @@ function About() {
       <header className="about-page-intro">
         <span className="about-eyebrow">A little more about me</span>
         <h1 className="about-page-title">Science, creativity & curiosity.</h1>
-        <p className="about-statement">Motivated to contribute to scientific progress, with a particular interest in healthcare and medicine.</p>
-        <p>
-          My academic work explores machine learning and artificial intelligence, including natural
-          language processing and explainable systems.
-        </p>
+        <p className="about-statement">Motivated to contribute to scientific progress, with a particular interest in healthcare and medicine. My academic work spans machine learning and artificial intelligence, from building and implementing models to exploring new methods and applications.</p>
       </header>
 
       <section className="about-beyond">

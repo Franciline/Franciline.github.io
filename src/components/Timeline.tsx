@@ -6,23 +6,34 @@ import '../assets/styles/Timeline.scss';
 const education = [
   {
     date: '2025-2027 (expected)',
+    logo: '/logos/sorbonne.png',
     title: 'Master’s Degree in Computer Science - MIND',
     titleLinkText: 'MIND',
     titleLink: 'https://sciences.sorbonne-universite.fr/formation-sciences/masters/master-informatique/parcours-mind',
     institution: 'Sorbonne University, Paris, France',
     description: 'Parcours Machine Learning, INtelligence artificielle et Données (MIND).',
+    distinction: 'First year: ranked 3rd out of 34 - High honors.',
   },
   {
     date: '2022 - 2025',
+    logo: '/logos/sorbonne.png',
     title: 'Bachelor’s Degree in Computer Science - Intensive Track',
     institution: 'Sorbonne University, Paris, France',
     description: 'Intensive computer science program with additional mathematics coursework and a focus on data science, machine learning, and AI.',
+    distinction: 'Ranked 4th out of 217 - High honors.',
+  },
+  {
+    date: '2019 - 2022',
+    title: 'French Baccalaureate - Mathematics & Computer Science',
+    institution: 'Externat Saint Joseph de Cluny, Cayenne, French Guiana',
+    distinction: 'Highest honors with jury commendation.',
   },
 ];
 
 const internships = [
   {
     date: 'Jul. 2026 - Aug. 2026',
+    logo: '/logos/kalclab.png',
     title: 'NLP Research Intern | LLM Evaluation for Patient Narratives',
     institution: 'KaLC Lab - University of Tsukuba, Ibaraki, Japan',
     description: 'Studied emotion-cause extraction from patient narratives, with potential applications in understanding and monitoring patients’ experiences during treatment. The work also aimed to establish a standardized dataset and evaluation framework for research.',
@@ -36,14 +47,15 @@ const internships = [
   },
   {
     date: 'Jun. 2025 - Jul. 2025',
+    logo: '/logos/lip6.png',
     title: 'Data Science Intern | ML for Carbon-Footprint Estimation',
     institution: 'LIP6 - Sorbonne University, Paris, France',
     description: <>In collaboration with <a href="https://abc-transitionbascarbone.fr" target="_blank" rel="noreferrer">Association pour la transition Bas Carbone (ABC)</a>, explored explainable machine learning to estimate corporate carbon footprints and help companies better understand their emissions.</>,
     highlights: [
       <>Cleaned, preprocessed, and analyzed <strong>2,029 corporate carbon-footprint records across 137 features</strong>, including missing-value handling, statistical analysis, and visualization.</>,
       <>Developed and compared classification, regression, and <strong>Bayesian-network models</strong> across feature-encoding strategies, evaluating performance using task-appropriate metrics.</>,
-      <>Applied <strong>Bayesian networks</strong> and introduced <strong>SHALL</strong> analysis to detect outliers and generate exploratory data.</>,
-      <>Delivered structured technical reports and presented findings to <strong>10+ stakeholders</strong>.</>,
+      <>Applied <strong>Bayesian networks</strong> and introduced <strong>SHALL</strong> analysis to detect outliers and generate exploratory data, contributing to the open-source library <a href="https://pyagrum.readthedocs.io/en/3.2.1/" target="_blank" rel="noreferrer"><strong>PyAgrum</strong></a>.</>,
+      <>Delivered structured technical reports and presented findings to <strong>10+ domain experts</strong>.</>,
     ],
   },
 ];
@@ -54,7 +66,9 @@ type TimelineItem = {
   titleLinkText?: string;
   titleLink?: string;
   institution: string;
+  logo?: string;
   description?: React.ReactNode;
+  distinction?: string;
   highlights?: React.ReactNode[];
 };
 
@@ -73,6 +87,9 @@ function TimelineColumn({ id, title, items, category }: { id: string; title: str
             <span className="timeline-marker" aria-hidden="true" />
             <p className="timeline-date">{item.date}</p>
             <div className="timeline-entry-content">
+            <div className="timeline-entry-heading">
+            {item.logo && <img className="timeline-logo" src={item.logo} alt={`${item.institution} logo`} loading="lazy" />}
+            <div>
             <h3>
               {item.titleLink && item.titleLinkText ? (
                 <>
@@ -83,7 +100,10 @@ function TimelineColumn({ id, title, items, category }: { id: string; title: str
               ) : item.title}
             </h3>
             <h4>{item.institution}</h4>
+            </div>
+            </div>
             {item.description && <p className="timeline-description">{item.description}</p>}
+            {item.distinction && <p className="timeline-distinction">{item.distinction}</p>}
             {item.highlights && (
               <ul className="timeline-highlights">
                 {item.highlights.map((highlight, index) => <li key={`${item.title}-${index}`}>{highlight}</li>)}

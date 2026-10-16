@@ -2,9 +2,21 @@ import React, { useState } from "react";
 import ProjectShowcase, { ProjectDetails } from './ProjectShowcase';
 import '../assets/styles/Project.scss';
 
-const academicProjects: ProjectDetails[] = [
+export const academicProjects: ProjectDetails[] = [
+    {
+        title: 'MedSAM vs U-Net for CT Lesion Segmentation',
+        date: '2026',
+        placeholderPreview: true,
+        previewLabel: 'MedSAM vs U-Net',
+        previewCaption: 'CT · Lesion Segmentation',
+        status: 'Work in progress',
+        summary: 'Comparing MedSAM and U-Net for lesion segmentation in CT images.',
+        description: 'An ongoing project exploring MedSAM and U-Net for CT lesion segmentation, with a focus on medical imaging, foundation models, and promptable segmentation.',
+        skills: ['Medical Imaging', 'Deep Learning', 'Computer Vision', 'Medical Image Segmentation', 'CT Segmentation', 'Lesion Segmentation', 'MedSAM', 'Segment Anything', 'U-Net', 'MONAI', 'Foundation Models', 'Promptable Segmentation'],
+    },
     {
         title: 'Local RAG Chatbot for LIP6',
+        resourceNote: 'Report and source code are not publicly available due to confidentiality constraints.',
         emphasis: ['fully local, end-to-end RAG chatbot', 'hybrid dense and sparse search', '86.1% Recall@10 and 77.2% Hit@5', '72.6% of generated answers cited the expected source', '78.5%', 'NVIDIA DGX Spark'],
         date: '2026',
         summary: 'Developed a fully local RAG chatbot for the LIP6 institutional website.',
@@ -123,6 +135,7 @@ function AcademicProject({ mode }: { mode: string }) {
             <p>Featured work</p>
         </header>
         <ProjectShowcase projects={showAll ? academicProjects : academicProjects.slice(0, 6)} mode={mode} />
+        <a className="projects-text-version" href="/projects/">Text version of all projects →</a>
         {academicProjects.length > 6 && (
             <button
                 className="projects-show-more project-resource-link"

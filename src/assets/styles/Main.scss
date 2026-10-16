@@ -27,6 +27,20 @@
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    animation: header-background-drift 10s linear infinite;
+}
+
+@keyframes header-background-drift {
+    0%, 100% { background-position: calc(50% + 16px) 50%; }
+    25% { background-position: 50% calc(50% + 8px); }
+    50% { background-position: calc(50% - 16px) 50%; }
+    75% { background-position: 50% calc(50% - 8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-section {
+        animation: none;
+    }
 }
 
 .about-section .content {
